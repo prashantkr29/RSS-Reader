@@ -24,14 +24,18 @@ def index():
         description = item.findtext('description')
         link = item.find('link').text
         category = item.find('category').text
-        image_url = item.find('media:thumbnail')
+        image_url = item.find('media')
+        pubdate = item.find('pubDate').text
+        pubdate = pubdate[:26]
 
+        print(image_url)
         # Append data to news_items list
         news_items.append({
             'title': title,
             'link': link,
             'description':description,
             'category':category,
+            'pubdate':pubdate,
             'image':image_url
         })
 
